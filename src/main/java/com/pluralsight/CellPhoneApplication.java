@@ -8,7 +8,26 @@ public class CellPhoneApplication {
 
         CellPhone phone = new CellPhone();
 
-        System.out.print("");
+        System.out.print("What is the Serial Number? ");
+        int serialNumber = scanner.nextInt();
+        scanner.nextLine();
+
+        System.out.print("What model is the phone? ");
+        String model = scanner.nextLine();
+
+        System.out.print("Who is the carrier? ");
+        String carrier = scanner.nextLine();
+
+        System.out.print("What is the phone number? ");
+        String phoneNumber = scanner.nextLine();
+
+        System.out.print("Who is the owner of the phone? ");
+        String owner = scanner.nextLine();
+
+
+
+
+
 
 
 
