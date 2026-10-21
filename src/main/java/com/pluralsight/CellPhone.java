@@ -55,6 +55,32 @@ public class CellPhone {
     public void setOwner(String owner) {
         this.owner = owner;
     }
+
+    // Level up, challenge refuse to call its own number.
+    public void dial(String phoneNumber) {
+        if (phoneNumber.equals(this.phoneNumber)) {
+            System.out.println(owner + "'s phone can't call its own number.");
+            return;
+        }
+        System.out.println(owner + "'s phone is calling" + phoneNumber);
+    }
+
+    // Optional overloaded Dial. Reuse the check Above.
+    public void dial(CellPhone phone) {
+        dial(phone.getPhoneNumber());
+    }
+
+    // Level up checking the phone number format using stream method.
+    public boolean isValidPhoneNumber() {
+        if (phoneNumber.length() !=12) {
+            return false;
+        }
+        for (int i = 0; i < phoneNumber.length(); i++) {
+            char c = phoneNumber.charAt(i);
+        }
+
+    }
+
 }
 
 
