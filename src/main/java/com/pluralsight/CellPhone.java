@@ -7,7 +7,7 @@ public class CellPhone {
     private String phoneNumber;
     private String owner;
 
-    public CellPhone() {
+    public CellPhone(int serialNumber, String) {
         this.serialNumber = 0;
         this.model = "";
         this.carrier = "";

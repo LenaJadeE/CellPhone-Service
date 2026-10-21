@@ -2,50 +2,63 @@ package com.pluralsight;
 
 import java.util.Scanner;
 
+
 public class CellPhoneApplication {
     public static void main(String[] args){
         Scanner scanner = new Scanner(System.in);
 
-        CellPhone phone = new CellPhone();
-
-        System.out.print("What is the Serial Number? ");
-        int serialNumber = scanner.nextInt();
-        scanner.nextLine();
-
-        System.out.print("What model is the phone? ");
-        String model = scanner.nextLine();
-
-        System.out.print("Who is the carrier? ");
-        String carrier = scanner.nextLine();
-
-        System.out.print("What is the phone number? ");
-        String phoneNumber = scanner.nextLine();
-
-        System.out.print("Who is the owner of the phone? ");
-        String owner = scanner.nextLine();
-
-        phone.setSerialNumber(serialNumber);
-        phone.setModel(model);
-        phone.setCarrier(carrier);
-        phone.setPhoneNumber(phoneNumber);
-        phone.setOwner(owner);
+        CellPhone phone1 = readPhoneFromUser(scanner);
+        CellPhone phone2 = new CellPhone(4568931, "IPhoneX", "AT&T", "214-555-4351", "Mike Jones");
+        CellPhone phone3 = new CellPhone(6548798, "Galaxy S", "T-Mobile", "568-664-3596", "Eve Dells");
+        //Level up
+        System.out.println();
+        display(phone1);
+        System.out.println(("Valid number? " + phone1.isValidPhoneNumber()));
 
         System.out.println();
+        display(phone2);
+
+        System.out.println();
+        display(phone3);
+
+        System.out.println();
+        phone1.dial(phone2.getPhoneNumber());
+        phone2.dial(phone1.getPhoneNumber());
+        phone1.dial(phone3);
+        phone1.dial(phone1); //Refused the same number.
+
+        scanner.close();
+    }
+
+    private static CellPhone readPhoneFromUser(Scanner scanner) {
+        CellPhone phone = new CellPhone();
+
+        phone.setSerialNumber(Integer.parseInt(prompt(scanner, "What is the Serial Number? ")));
+        phone.setModel(prompt(scanner, "What model is the phone? "));
+        phone.setCarrier(prompt(scanner, "Who is the carrier? "));
+        phone.setPhoneNumber(prompt(scanner,"What is the phone number? "));
+        phone.setOwner(prompt(scanner,"Who is the owner of the phone? "));
+
+        return phone;
+    }
+
+    private static String prompt(Scanner scanner, String message) {
+        System.out.print(message);
+        return scanner.nextLine().trim();
+    }
+
+    public static void display(CellPhone phone) {
         System.out.println("Serial number: " + phone.getSerialNumber());
         System.out.println("Model: " + phone.getModel());
         System.out.println("Carrier: " + phone.getCarrier());
         System.out.println("Phone Number: " + phone.getPhoneNumber());
         System.out.println("Owner: " + phone.getOwner());
 
-        scanner.close();
-
     }
 }
 
 //EXERCISE 1
-// Create a new project called cellphone-service. Add a package com.pluralsight.
-// Remember: When creating a new Java project, create a new git repository and commit your changes often!
-// Don’t forget to push to github.com. Always share your IntelliJ project to GitHub
+
 // Step 1
 //  Create a class named CellPhoneApplication and add the main() method.
 //  Create a separate class named CellPhone.
