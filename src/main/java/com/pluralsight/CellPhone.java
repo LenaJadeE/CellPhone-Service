@@ -77,8 +77,16 @@ public class CellPhone {
         }
         for (int i = 0; i < phoneNumber.length(); i++) {
             char c = phoneNumber.charAt(i);
+            boolean shouldBeDash = (i == 3 || i == 7);
+            if (shouldBeDash && c != '-') {
+                return false;
+            }
+            if (!shouldBeDash && !Character.isDigit(c)){
+                return false;
+            }
         }
 
+        return true;
     }
 
 }
